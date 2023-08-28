@@ -1,13 +1,17 @@
-use data_struct::stack::{LinkStack, VecStack};
+#![allow(dead_code)]
+// #![allow(unused_variables)]
+use data_struct::stack::Stack;
 use algorithm::sort::bubble_sort::*;
+use data_struct::linked_list::LinkedList;
 use data_struct::queue::Queue;
 
 fn main() {
     println!("Hello");
     // test_bubble_sort();
-    // test_vec_stack();
+    // test_stack();
     // test_link_stack();
-    test_queue();
+    //test_queue();
+    test_list();
 }
 
 fn test_bubble_sort(){
@@ -16,8 +20,8 @@ fn test_bubble_sort(){
     println!("{:?}",vec);
 }
 
-fn test_vec_stack() {
-    let mut list = VecStack::new();
+fn test_stack() {
+    let mut list = Stack::new();
     list.push(1);
     list.push(2);
     list.push(3);
@@ -26,19 +30,6 @@ fn test_vec_stack() {
     println!("{:?}",list);
 }
 
-fn test_link_stack(){
-    let mut list = LinkStack::new();
-    list.push(1);
-    list.push(3);
-    list.push(5);
-    list.push(9);
-    println!("list empty:{}",list.is_empty());
-    for (i,v) in list.iter().enumerate(){
-        println!("No.{i}:{v}");
-    }
-    println!("list peek:{:?}",list.peek());
-
-}
 
 fn test_queue() {
     let mut queue: Queue<u8> = Queue::new();
@@ -49,3 +40,15 @@ fn test_queue() {
     println!("{:?}",retrieved_dequeue);
 }
 
+fn test_list() {
+    let mut list_str = LinkedList::<String>::new();
+    list_str.add("A".to_string());
+    list_str.add("B".to_string());
+    list_str.add("B".to_string());
+    list_str.add("B".to_string());
+    println!("Linked List :  {}", list_str);
+    let item0 = list_str.get(0).unwrap();
+    println!("index0 : {}", item0);
+    let item1 = list_str.get(1).unwrap();
+    println!("index1 : {}", item1);
+}

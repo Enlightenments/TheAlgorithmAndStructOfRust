@@ -21,7 +21,7 @@ impl <T> Queue<T> {
     }
     pub fn dequeue(&mut self)-> Result<T, &str>{
         if self.is_empty() {
-            Err("")
+            Err("empty")
         }else {
             Ok(self.data.remove(0))
         }
